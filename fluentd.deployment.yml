@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: fluentd
+  namespace: kube-system
 spec:
   template:
     metadata:
@@ -9,7 +10,7 @@ spec:
         service: fluentd
     spec:
       containers:
-      - image: larskumbier/fluentd:test
+      - image: gganssauge/fluentd-arm
         imagePullPolicy: Always
         name: fluentd
         tty: true
@@ -21,4 +22,4 @@ spec:
       volumes:
       - name: fluent-config-volume
         configMap:
-          name: fluentd-config
+          name: fluentd.conf
