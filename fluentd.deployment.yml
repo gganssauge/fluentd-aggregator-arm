@@ -9,6 +9,15 @@ spec:
       labels:
         service: fluentd
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - arm
       containers:
       - image: gganssauge/fluentd-arm
         imagePullPolicy: Always
