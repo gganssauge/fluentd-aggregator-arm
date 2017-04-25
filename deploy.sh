@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 bash create-config.sh
-kubectl apply -f fluentd.deployment.yml
-kubectl apply -f fluentd.service.yml
+kubectl -n kube-system apply -f fluentd.deployment.yml
+kubectl -n kube-system apply -f fluentd.service.yml
