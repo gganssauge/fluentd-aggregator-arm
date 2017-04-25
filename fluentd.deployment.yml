@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: fluentd
-  namespace: kube-system
 spec:
   template:
     metadata:
@@ -31,4 +30,4 @@ spec:
       volumes:
       - name: fluent-config-volume
         configMap:
-          name: fluentd.conf
+          name: fluent.conf
