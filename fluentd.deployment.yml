@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fluentd
+spec:
+  template:
+    metadata:
+      labels:
+        service: fluentd
+    spec:
+      containers:
+      - image: larskumbier/fluentd:test
+        imagePullPolicy: Always
+        name: fluentd
+        tty: true
+        ports:
+        - containerPort: 24224
+        volumeMounts:
+        - name: fluent-config-volume
+          mountPath: /fluentd/etc/
+      volumes:
+      - name: fluent-config-volume
+        configMap:
+          name: fluentd-config
